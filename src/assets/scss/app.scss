@@ -1,0 +1,14 @@
+@use 'normalize.css';
+@use './fonts.scss';
+@use './base.scss';
+@use './utilities.scss';
+@use './comps.scss';
+
+:root {
+  --color-bg: #F2F2F2;
+  --color-text-dark: #2A2A2A;
+  --color-secondary: #FFEF93;
+  --color-primary: #A2FFBE;
+  --color-white: '#FFFFFF';
+  --lett-sp-sm: -0.02em;
+}
