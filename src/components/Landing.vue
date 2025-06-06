@@ -6,6 +6,7 @@
     <SectionTrainings />
     <SectionFaq class="section-faq" />
     <Footer />
+    <AuthModal v-model:showed="auth.showedModal.value" @auth:completed="auth.onComplete" />
   </main>
 </template>
 
@@ -16,6 +17,10 @@
   import PeriodTape from './Sections/PeriodTape.vue';
   import SectionTrainings from './Sections/Trainings.vue';
   import SectionFaq from './Sections/Faq.vue';
+  import AuthModal from '@/components/Auth/Modal.vue';
+  import { init as initAuth } from '@/composables/useAuth';
+
+  const auth = initAuth();
 </script>
 
 <style scoped lang="scss">
