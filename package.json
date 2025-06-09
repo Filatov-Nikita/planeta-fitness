@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@kyvg/vue3-notification": "^3.4.1",
+    "@popperjs/core": "^2.11.8",
     "animate.css": "^4.1.1",
     "axios": "^1.9.0",
     "maska": "^2.1.11",
     "normalize.css": "^8.0.1",
     "swiper": "^11.2.8",
+    "v-calendar": "^3.1.2",
     "vue": "^3.5.13",
     "vue-screen": "^2.4.2",
     "vue-slide-up-down": "^3.0.0"
