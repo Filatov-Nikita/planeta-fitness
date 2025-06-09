@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import './assets/scss/app.scss';
 import 'animate.css';
+import 'swiper/css';
 import 'virtual:svg-icons-register';
 import Button from './components/Base/Button.vue';
 import Icon from './components/Base/Icon.vue';
