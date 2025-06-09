@@ -3,9 +3,7 @@
     <div class="wrapper">
       <h2 class="h2 text-center title">Выбери свою идеальную тренировку</h2>
       <div class="items">
-        <div class="item-list">
-
-        </div>
+        <TrainingsList class="item-list" />
         <div class="item">
           <img
             class="photo"
@@ -32,7 +30,7 @@
 </template>
 
 <script setup>
-
+  import TrainingsList from '@/components/Trainings/List.vue';
 </script>
 
 <style scoped lang="scss">
@@ -43,6 +41,7 @@
   .items {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
     --col: 33.3%;
     --gap: 25px;
     margin-left: calc(var(--gap) * -1);
@@ -53,11 +52,6 @@
     width: calc(var(--col) - var(--gap));
     margin-left: var(--gap);
     margin-top: var(--gap);
-  }
-
-  .item-list {
-    background: #313634;
-    border-radius: 50px;
   }
 
   .photo {

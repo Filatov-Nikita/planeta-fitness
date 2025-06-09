@@ -21,3 +21,20 @@
     opacity: 0.6;
   }
 }
+
+.scroll-x {
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background: var(--color-bg);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: var(--color-primary);
+  }
+}
