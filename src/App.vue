@@ -7,12 +7,12 @@
   >
   <Suspense>
     <Landing />
-      <template #fallback>
-          <div class="loader">
-            <BaseSpinner size="100px" />
-          </div>
-        </template>
-      </Suspense>
+    <template #fallback>
+      <div class="loader">
+        <BaseSpinner size="100px" />
+      </div>
+    </template>
+    </Suspense>
   </Transition>
 </template>
 
