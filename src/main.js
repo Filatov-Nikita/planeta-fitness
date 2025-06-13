@@ -13,10 +13,14 @@ import Spinner from './components/Base/Spinner.vue';
 import Select from './components/Base/Select.vue';
 import InnerLoading from './components/Base/InnerLoading.vue';
 import Notifications from '@kyvg/vue3-notification';
+import VOrder from './plugins/order';
+import VScroll from './plugins/scroll';
 
 const app = createApp(App);
 
 app.use(Notifications);
+app.use(VOrder);
+app.use(VScroll);
 
 app.component('BaseButton', Button);
 app.component('BaseIcon', Icon);

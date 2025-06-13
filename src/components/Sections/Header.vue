@@ -7,16 +7,16 @@
         </a>
         <nav class="nav">
           <div class="nav-item">
-            <a class="nav-link" href="#categories">Виды занятий</a>
+            <a class="nav-link" href="#trainings" @click.prevent="$scroll.onShowView">Виды занятий</a>
           </div>
           <div class="nav-item">
-            <a class="nav-link" href="#schedule">Расписание</a>
+            <a class="nav-link" href="#order" @click.prevent="$scroll.onShowView">Расписание</a>
           </div>
           <div class="nav-item">
-            <a class="nav-link" href="#faq">Вопросы-ответы</a>
+            <a class="nav-link" href="#faq" @click.prevent="$scroll.onShowView">Вопросы-ответы</a>
           </div>
           <div class="nav-item">
-            <a class="nav-link" href="#partners">Партнеры</a>
+            <a class="nav-link" href="#partners" @click.prevent="$scroll.onShowView">Партнеры</a>
           </div>
         </nav>
       </div>
@@ -24,7 +24,7 @@
   </header>
 </template>
 
-<script setup lang="ts">
+<script setup>
 
 </script>
 

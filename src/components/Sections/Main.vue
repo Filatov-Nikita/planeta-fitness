@@ -4,7 +4,7 @@
       <div class="banner">
         <img class="banner__img" src="@/assets/images/banner.jpg" width="2011" height="1131" alt="Фитнес на Крыше">
         <div class="order-wrap">
-          <BaseButton class="order">Записаться</BaseButton>
+          <BaseButton class="order" @click="$order.show">Записаться</BaseButton>
         </div>
       </div>
       <h1 class="title">
