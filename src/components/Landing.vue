@@ -3,10 +3,11 @@
     <Header />
     <SectionMain class="section-main" />
     <PeriodTape class="section-tape" />
-    <SectionTrainings />
+    <SectionTrainings class="section-trainings" />
+    <SectionOrder class="section-order" />
     <SectionFaq class="section-faq" />
     <SectionPartners class="section-partners" />
-    <Footer />
+    <Footer  />
     <AuthModal v-model:showed="auth.showedModal.value" @auth:completed="auth.onComplete" />
   </main>
 </template>
@@ -19,6 +20,7 @@
   import SectionTrainings from './Sections/Trainings.vue';
   import SectionFaq from './Sections/Faq.vue';
   import SectionPartners from './Sections/Partners.vue';
+  import SectionOrder from './Sections/Order.vue';
   import AuthModal from '@/components/Auth/Modal.vue';
   import { init as initAuth } from '@/composables/useAuth';
 
@@ -31,14 +33,22 @@
   }
 
   .section-tape {
-    margin-bottom: 150px;
+    margin-bottom: 75px;
+  }
+
+  .section-trainings {
+    padding: 75px 0;
   }
 
   .section-faq {
-    margin: 150px 0;
+    padding: 75px 0;
   }
 
   .section-partners {
-    margin-bottom: 140px;
+    padding: 75px 0 100px;
+  }
+
+  .section-order {
+    padding: 75px 0;
   }
 </style>
