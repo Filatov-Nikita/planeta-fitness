@@ -8,7 +8,7 @@
   </component>
 </template>
 
-<script setup lang="ts">
+<script setup>
   defineProps({
     tag: {
       default: 'button',

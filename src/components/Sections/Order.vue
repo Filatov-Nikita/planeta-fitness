@@ -1,5 +1,5 @@
 <template>
-  <section id="order" class="section-order" v-if="data && data.results">
+  <section id="order" class="section-order">
     <div class="wrapper">
       <h2 class="h2 section-order__title">Запишись на удобное время</h2>
       <div class="section-order__grid">
@@ -48,9 +48,7 @@
   import Calendar from '@/components/Order/Calendar.vue';
   import Categories from '@/components/Order/Categories.vue';
   import ActiveEvent from '@/components/Order/ActiveEvent.vue';
-  import useRequest from '@/composables/useRequest';
   import useAuth from '@/composables/useAuth';
-  import * as CategoriesRepo from '@/http/events';
   import * as OrderRepo from '@/http/order';
   import { computed, ref, watch } from 'vue';
   import { dateToIso } from '@/helpers/dates';
@@ -59,16 +57,24 @@
   import useForm from '@/composables/useForm';
   import useAppGrid from '@/composables/useAppGrid';
 
-  const grid = useAppGrid();
-
-  const { data, loading, send } = await useRequest(CategoriesRepo.all, {
-    errorMessage: 'Не удалось загрузить данные!'
+  const props = defineProps({
+    categories: {
+      required: true,
+      type: Array,
+    },
+    loading: {
+      default: false,
+      type: Boolean,
+    },
   });
+
+  const emit = defineEmits([ 'finish' ]);
+
+  const grid = useAppGrid();
 
   const orderDate = ref('');
   const activeEvent = ref(null);
-  const activeCategory = ref(null);
-  const categories = computed(() => data.value?.results ?? []);
+  const activeCategory = defineModel('activeCategory', { required: true, type: [Object, null] });
 
   watch(activeCategory, () => {
     orderDate.value = '';
@@ -76,8 +82,6 @@
   });
 
   const disabledDates = computed(() => {
-    if(!data.value?.results) return [ { start: null, end: null } ];
-
     function isDisabled(event, _opts) {
       const dt1 = event.start_date.split(' ')[0];
       const dt2 = dateToIso(_opts.date);
@@ -101,7 +105,7 @@
 
     if(!activeCategory.value) {
       return makeEverydayPattern((_opts) => {
-        return data.value.results
+        return props.categories
           .every(item => {
             return item.events.every(event => isDisabled(event, _opts));
           });
@@ -115,8 +119,6 @@
   });
 
   const calendarAttrs = computed(() => {
-    if(!data.value?.results) return [];
-
     function makeHighlight(color) {
       return {
         fillMode: 'outline',
@@ -127,7 +129,7 @@
     }
 
     if(!activeCategory.value) {
-      return data.value.results.reduce((acc, item) => {
+      return props.categories.reduce((acc, item) => {
         item.events.forEach(event => {
           acc.push({
             dates: new Date(event.start_date),
@@ -183,12 +185,14 @@
     orderDate.value = '';
     activeCategory.value = null;
     activeEvent.value = null;
-    send();
+    emit('finish');
   }
 </script>
 
 <style scoped lang="scss">
   .section-order {
+    position: relative;
+
     &__title {
       text-align: center;
       margin-bottom: 50px;

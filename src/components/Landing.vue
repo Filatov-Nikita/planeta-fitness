@@ -3,8 +3,20 @@
     <Header />
     <SectionMain class="section-main" />
     <PeriodTape class="section-tape" />
-    <SectionTrainings class="section-trainings" />
-    <SectionOrder class="section-order" />
+    <template v-if="data?.results">
+      <SectionTrainings
+        class="section-trainings"
+        :categories="data.results"
+        @change:category="changeCategory($event, $order.show)"
+      />
+      <SectionOrder
+        class="section-order"
+        v-model:activeCategory="activeCategory"
+        :categories="data.results"
+        :loading="loading"
+        @finish="send"
+      />
+    </template>
     <SectionFaq class="section-faq" />
     <SectionPartners class="section-partners" />
     <Footer  />
@@ -23,8 +35,22 @@
   import SectionOrder from './Sections/Order.vue';
   import AuthModal from '@/components/Auth/Modal.vue';
   import { init as initAuth } from '@/composables/useAuth';
+  import useRequest from '@/composables/useRequest';
+  import * as CategoriesRepo from '@/http/events';
+  import { ref } from 'vue';
 
   const auth = initAuth();
+
+  const { data, loading, send } = await useRequest(CategoriesRepo.all, {
+    errorMessage: 'Не удалось загрузить данные!'
+  });
+
+  const activeCategory = ref(null);
+
+  function changeCategory(category, show) {
+    activeCategory.value = category;
+    show();
+  }
 </script>
 
 <style scoped lang="scss">

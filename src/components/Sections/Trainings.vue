@@ -3,7 +3,7 @@
     <div class="wrapper">
       <h2 class="h2 text-center title">Выбери свою идеальную тренировку</h2>
       <div class="items">
-        <TrainingsList class="item-list" />
+        <TrainingsList class="item-list" :items="categories" @change:category="$emit('change:category', $event)" />
         <div class="item">
           <img
             class="photo"
@@ -31,6 +31,15 @@
 
 <script setup>
   import TrainingsList from '@/components/Trainings/List.vue';
+
+  defineProps({
+    categories: {
+      required: true,
+      type: Array,
+    }
+  });
+
+  defineEmits([ 'change:category' ]);
 </script>
 
 <style scoped lang="scss">

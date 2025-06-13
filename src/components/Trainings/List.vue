@@ -2,49 +2,29 @@
   <div class="list-block">
     <div class="list-wrap">
       <ul class="list scroll-x">
-        <li class="item">
-          <button class="item-btn" type="button">Пилатес</button>
-        </li>
-        <li class="item">
-          <button class="item-btn" type="button">Функциональный тренинг</button>
-        </li>
-        <li class="item">
-          <button class="item-btn" type="button">Стретчинг</button>
-        </li>
-        <li class="item">
-          <button class="item-btn" type="button">Стретчинг</button>
-        </li>
-        <li class="item">
-          <button class="item-btn" type="button">Стретчинг</button>
-        </li>
-        <li class="item">
-          <button class="item-btn" type="button">Стретчинг</button>
-        </li>
-        <li class="item">
-          <button class="item-btn" type="button">Стретчинг</button>
-        </li>
-        <li class="item">
-          <button class="item-btn" type="button">Стретчинг</button>
-        </li>
-        <li class="item">
-          <button class="item-btn" type="button">Стретчинг</button>
-        </li>
-        <li class="item">
-          <button class="item-btn" type="button">Стретчинг</button>
-        </li>
-            <li class="item">
-          <button class="item-btn" type="button">Стретчинг</button>
-        </li>
-            <li class="item">
-          <button class="item-btn" type="button">Стретчинг</button>
+        <li
+          class="item"
+          v-for="item in items"
+          :key="item.id"
+        >
+          <button class="item-btn" type="button" @click="$emit('change:category', item)">
+            {{ item.title }}
+          </button>
         </li>
       </ul>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
+  defineProps({
+    items: {
+      required: true,
+      type: Array,
+    }
+  });
 
+  defineEmits([ 'change:category' ]);
 </script>
 
 <style scoped lang="scss">
