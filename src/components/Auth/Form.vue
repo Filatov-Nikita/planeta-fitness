@@ -86,4 +86,12 @@
       margin-top: 24px;
     }
   }
+
+  .link {
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--color-yellow-700);
+    }
+  }
 </style>

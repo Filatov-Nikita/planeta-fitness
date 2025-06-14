@@ -34,10 +34,10 @@ export default {
   width: 0.8em;
   height: 0.8em;
   margin: 0.1em;
-  border: 0.05em solid var(--color-primary-hover);
+  border: 0.05em solid var(--color-green-600);
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: var(--color-primary-hover) transparent transparent transparent;
+  border-color: var(--color-green-600) transparent transparent transparent;
 }
 
 .lds-ring div:nth-child(1) {

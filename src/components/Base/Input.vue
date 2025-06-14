@@ -61,13 +61,13 @@
       font-size: 16px;
       line-height: 1.2;
       margin-bottom: 8px;
-      color: var(--color-white);
+      color: var(--color-black);
     }
 
     &__input {
       display: block;
       width: 100%;
-      border: 1px solid #C3C3C3;
+      border: 1px solid var(--color-gray-600);
       height: 50px;
       padding: 8px 16px;
       font-size: 14px;
@@ -75,11 +75,11 @@
       background: var(--color-white);
 
       &:hover {
-        border-color: var(--color-primary-hover);
+        border-color: var(--color-yellow-600);
       }
 
       &:focus {
-        border-color: var(--color-accent);
+        border-color: var(--color-yellow-700);
       }
     }
   }

@@ -64,7 +64,7 @@
     color: var(--color-text-dark);
 
     &:hover {
-      color: #6fab81;
+      color: var(--color-green-700);
     }
   }
 </style>

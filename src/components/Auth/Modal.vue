@@ -2,7 +2,7 @@
   <BaseModal v-model="showed">
     <BaseModalCard class="auth-card">
       <button class="close-modal" @click="showed = false">
-        <BaseIcon class="w-full h-full" name="close" color="#ffffff" />
+        <BaseIcon class="w-full h-full" name="close" color="#000000" />
       </button>
       <div class="auth-card__body">
         <KeepAlive>

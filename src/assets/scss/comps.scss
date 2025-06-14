@@ -38,3 +38,12 @@
     background: var(--color-primary);
   }
 }
+
+.app-link {
+  color: var(--color-green-600);
+
+  &:hover {
+    color: var(--color-green-700);
+    text-decoration: underline;
+  }
+}
