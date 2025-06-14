@@ -74,5 +74,8 @@
 
   .body {
     padding-top: 20px;
+    font-size: 16px;
+    letter-spacing: var(--lett-sp-sm);
+    line-height: 1.3;
   }
 </style>
