@@ -29,23 +29,28 @@
   .footer {
     padding: 48px 0;
 
+    @include sm {
+      padding: 35px 0;
+    }
+
     &__wrap {
       display: flex;
       flex-wrap: wrap;
       align-items: flex-start;
       justify-content: space-between;
-      row-gap: 15px;
+      row-gap: 24px;
     }
 
     &__address {
       font-weight: 400;
       font-size: 20px;
-      line-height: 1.35;
+      line-height: 1;
       letter-spacing: var(--lett-sp-sm);
       margin-bottom: 30px;
 
       @include sm {
         font-size: 16px;
+        margin-bottom: 20px;
       }
     }
 
@@ -63,10 +68,6 @@
 
   .logo {
     width: 141px;
-
-    @include sm {
-      width: 120px;
-    }
 
     &:hover {
       opacity: 0.7;
