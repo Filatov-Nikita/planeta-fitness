@@ -55,6 +55,19 @@
     --gap: 25px;
     margin-left: calc(var(--gap) * -1);
     margin-top: calc(var(--gap) * -1);
+
+    @include lg {
+      --col: 50%;
+    }
+
+    @include md {
+      --gap: 15px;
+    }
+
+    @include sm {
+      --col: 100%;
+      --gap: 30px;
+    }
   }
 
   .item, .item-list {
@@ -63,8 +76,22 @@
     margin-top: var(--gap);
   }
 
+  .item-list {
+    @include md {
+      order: 1;
+    }
+
+    @include sm {
+      order: -1;
+    }
+  }
+
   .photo {
     width: 100%;
     border-radius: 50px;
+
+    @include md {
+      border-radius: 40px;
+    }
   }
 </style>
