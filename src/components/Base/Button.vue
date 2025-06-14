@@ -1,23 +1,23 @@
 <template>
-  <component
+  <button
     class="base-btn"
-    :is="tag"
-    :type="tag === 'button' ? type : undefined"
+    :type="type"
+    :disabled="disabled"
   >
     <slot></slot>
-  </component>
+  </button>
 </template>
 
 <script setup>
   defineProps({
-    tag: {
-      default: 'button',
-      type: String,
-    },
     type: {
       default: 'button',
       type: String,
-    }
+    },
+    disabled: {
+      default: false,
+      type: Boolean,
+    },
   });
 </script>
 
@@ -35,11 +35,17 @@
     text-align: center;
 
     &:hover {
-      background: #eadb87;
+      background: var(--color-secondary-hover);
     }
 
     &:active {
-      background: #c9bc73;
+      background: var(--color-secondary-active);
+    }
+
+    &:disabled {
+      background: var(--color-gray-300);
+      color: var(--color-gray-700);
+      cursor: default;
     }
   }
 </style>
