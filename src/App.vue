@@ -1,5 +1,5 @@
 <template>
-  <notifications />
+  <notifications class="n-group" />
   <Transition
     mode="out-in"
     leave-active-class="animate__animated animate__fadeOut loader--delay"
@@ -21,6 +21,10 @@
 </script>
 
 <style scoped lang="scss">
+  .n-group.vue-notification-group {
+    z-index: 9100;
+  }
+
   .loader {
     position: fixed;
     left: 0;

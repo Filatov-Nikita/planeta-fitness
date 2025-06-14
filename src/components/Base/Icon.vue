@@ -1,5 +1,5 @@
 <template>
-  <svg aria-hidden="true">
+  <svg aria-hidden="true" :class="{ 'w-full': fit, 'h-full': fit }">
     <use :href="symbolId" :fill="fill" />
   </svg>
 </template>
@@ -22,6 +22,10 @@ export default defineComponent({
       default: undefined,
       type: String,
     },
+    fit: {
+      default: false,
+      type: Boolean,
+    }
   },
   setup(props) {
     const symbolId = computed(() => `#${props.prefix}-${props.name}`);
