@@ -39,6 +39,11 @@
     border-radius: 40px;
     background: var(--color-white);
     color: var(--color-text-dark);
+
+    @include sm {
+      padding: 20px 24px;
+      border-radius: 24px;
+    }
   }
 
   .btn {
@@ -70,6 +75,11 @@
     line-height: 1;
     letter-spacing: var(--lett-sp-sm);
     flex-grow: 1;
+
+    @include sm {
+      font-size: 18px;
+      line-height: 1.2;
+    }
   }
 
   .body {

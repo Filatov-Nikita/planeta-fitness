@@ -29,6 +29,14 @@
     --gap-y: 20px;
     margin-top: calc(var(--gap-y) * -1);
     margin-left: calc(var(--gap-x) * -1);
+
+    @include md {
+      --col: 100%;
+    }
+
+    @include sm {
+      --gap-y: 10px;
+    }
   }
 
   .list-item {
