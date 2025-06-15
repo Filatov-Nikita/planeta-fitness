@@ -23,6 +23,7 @@
 
 <style scoped lang="scss">
   .tape {
+    --anim-start: -761px;
     overflow: hidden;
     padding: 30px 0;
     font-size: 26px;
@@ -31,15 +32,26 @@
     letter-spacing: var(--lett-sp-sm);
     background: var(--color-primary);
     color: var(--color-text-dark);
+
+    @include sm {
+      --anim-start: -460px;
+      padding: 20px 0;
+      font-size: 16px;
+    }
   }
 
   .items {
     display: flex;
     column-gap: 50px;
+    transform: translateX(var(--anim-start));
     animation-name: move1;
     animation-duration: 10s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+
+    @include sm {
+      column-gap: 25px;
+    }
   }
 
   .item {
@@ -47,6 +59,10 @@
     display: flex;
     align-items: center;
     column-gap: 20px;
+
+    @include sm {
+      column-gap: 12px;
+    }
   }
 
   .dot {
@@ -55,11 +71,16 @@
     height: 8px;
     border-radius: 50%;
     background: var(--color-text-dark);
+
+    @include sm {
+      width: 6px;
+      height: 6px;
+    }
   }
 
   @keyframes move1 {
     0% {
-      transform: translateX(-761px);
+      transform: translateX(var(--anim-start));
     }
 
     100% {
