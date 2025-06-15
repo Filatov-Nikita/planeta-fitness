@@ -1,21 +1,23 @@
 <template>
-  <div class="items">
-    <BaseTab
-      class="item-one"
-      key="all"
-      :active="activeItem === null"
-      text="Все"
-      @click="onClick(null)"
-    />
-    <BaseTab
-      class="item-one"
-      v-for="item in items"
-      :key="item.id"
-      :active="item.id === activeItem?.id"
-      :text="item.title"
-      :color="item.color"
-      @click="onClick(item)"
-    />
+  <div class="cats">
+    <div class="items">
+      <BaseTab
+        class="item-one"
+        key="all"
+        :active="activeItem === null"
+        text="Все"
+        @click="onClick(null)"
+      />
+      <BaseTab
+        class="item-one"
+        v-for="item in items"
+        :key="item.id"
+        :active="item.id === activeItem?.id"
+        :text="item.title"
+        :color="item.color"
+        @click="onClick(item)"
+      />
+    </div>
   </div>
 </template>
 
@@ -39,24 +41,34 @@
 </script>
 
 <style scoped lang="scss">
+  $b_lg: 1200px;
+
+  .cats {
+    @include screen($b_lg) {
+      overflow-y: hidden;
+      padding-bottom: 8px;
+    }
+  }
+
   .items {
     display: flex;
     flex-wrap: wrap;
     column-gap: 10px;
-    row-gap: 14px;
+    row-gap: 15px;
+
+    @include screen($b_lg) {
+      flex-wrap: nowrap;
+    }
   }
 
   .item-one {
-    @include lg {
-      flex-grow: 1;
-    }
+    white-space: nowrap;
 
-    @include md {
-      flex-grow: initial;
-    }
-
-    @include sm {
-      width: 100%;
+    &.tab {
+      @include sm {
+        font-size: 14px;
+        padding: 16px;
+      }
     }
   }
 </style>

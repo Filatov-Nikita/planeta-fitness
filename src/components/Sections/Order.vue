@@ -1,10 +1,31 @@
 <template>
   <section id="order" class="section-order">
     <div class="wrapper">
-      <h2 class="h2 section-order__title">Запишись на удобное время</h2>
+      <h2 class="h2 section-order__title">Запишись на удобное&nbsp;время</h2>
       <div class="section-order__grid">
         <div class="section-order__left">
           <Calendar v-model="orderDate" :disabledDates="disabledDates" :attributes="calendarAttrs" @change:event="activeEvent = $event" />
+          <Transition
+            v-if="!grid.lg"
+            enter-active-class="animate__animated animate__zoomIn anim-fast"
+            leave-active-class="animate__animated animate__zoomOut anim-fast"
+          >
+            <ActiveEvent
+              class="section-order__event"
+              v-if="activeEvent && orderDate"
+              :event="activeEvent"
+            >
+              <template #actions>
+                <BaseButton
+                  class="section-order__btn"
+                  :disabled="!canOrder"
+                  @click="createOrderAction"
+                >
+                  Записаться
+                </BaseButton>
+              </template>
+            </ActiveEvent>
+          </Transition>
         </div>
         <div class="section-order__right">
           <div class="working-time">
@@ -13,6 +34,7 @@
           </div>
           <Categories :items="categories" v-model:activeItem="activeCategory" />
           <Transition
+            v-if="grid.lg"
             enter-active-class="animate__animated animate__zoomIn anim-fast"
             leave-active-class="animate__animated animate__zoomOut anim-fast"
           >
@@ -79,6 +101,12 @@
   watch(activeCategory, () => {
     orderDate.value = '';
     activeEvent.value = null;
+  });
+
+  watch(orderDate, (date) => {
+    if(date) {
+      scrollToCalendar();
+    }
   });
 
   const disabledDates = computed(() => {
@@ -187,6 +215,13 @@
     activeEvent.value = null;
     emit('finish');
   }
+
+  function scrollToCalendar() {
+    const calendar = document.querySelector('.app-calendar');
+    if(!calendar) return;
+    const y = window.scrollY + calendar.getBoundingClientRect().top - 10;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
 </script>
 
 <style scoped lang="scss">
@@ -199,26 +234,53 @@
     }
 
     &__grid {
+      --gap-x: 40px;
+      --col1: 45%;
+      --col2: 55%;
       display: flex;
       flex-wrap: wrap;
-      column-gap: 40px;
+      column-gap: var(--gap-x);
+
+      @include lg {
+        --col1: 55%;
+        --col2: 45%;
+      }
+
+      @include md {
+        --col1: 100%;
+        --col2: 100%;
+        --gap-x: 0px;
+        row-gap: 24px;
+      }
     }
 
     &__left {
-      width: calc(45% - 20px);
+      width: calc(var(--col1) - (var(--gap-x) / 2));
     }
 
     &__right {
-      width: calc(55% - 20px);
+      width: calc(var(--col2) - (var(--gap-x) / 2));
+
+      @include md {
+        order: -1;
+      }
     }
 
     &__event {
       margin-top: 40px;
+
+      @include sm {
+        margin-top: 24px;
+      }
     }
 
     &__btn {
       width: 100%;
       max-width: 250px;
+
+      @include sm {
+        max-width: 100%;
+      }
     }
   }
 
@@ -227,9 +289,33 @@
     gap: 20px;
     margin-bottom: 40px;
 
+    @include md {
+      margin-bottom: 24px;
+    }
+
+    @include sm {
+      gap: 15px;
+    }
+
     &__badge {
       width: 100%;
       max-width: 220px;
+
+      @include md {
+        max-width: 100%;
+      }
+
+      &.badge {
+        @include lg {
+          font-size: 16px;
+          padding: 14px 16px;
+        }
+
+        @include md {
+          font-size: 14px;
+          padding: 16px;
+        }
+      }
     }
   }
 

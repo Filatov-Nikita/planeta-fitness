@@ -47,6 +47,10 @@
     box-shadow: 0 4px 35px 0 rgba(170, 170, 170, 0.03);
     border-radius: 30px;
 
+    @include sm {
+      border-radius: 18px;
+    }
+
     .vc-weeks {
       padding: 40px 35px 20px;
 
@@ -62,7 +66,6 @@
       font-size: 24px;
 
       @include sm {
-        font-size: 16px;
         margin-top: 20px;
         padding-left: 12px;
         padding-right: 12px;
@@ -72,6 +75,10 @@
         font-size: 24px;
         font-weight: 700;
         line-height: 1;
+
+        @include sm {
+          font-size: 16px;
+        }
       }
     }
 

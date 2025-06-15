@@ -41,12 +41,22 @@
     border-radius: 30px;
     background: var(--color-white);
     box-shadow: 0 3px 20px 0 rgba(168, 168, 168, 0.14);
+
+    @include md {
+      max-width: 100%;
+    }
+
+    @include sm {
+      border-radius: 18px;
+      padding: 20px;
+    }
   }
 
   .head {
     display: flex;
     flex-wrap: wrap;
     column-gap: 40px;
+    row-gap: 12px;
     justify-content: space-between;
     margin-bottom: 24px;
   }
@@ -58,6 +68,10 @@
     font-size: 22px;
     line-height: 1;
     letter-spacing: -0.01em;
+
+    @include sm {
+      font-size: 18px;
+    }
   }
 
   .count {
@@ -66,6 +80,10 @@
     line-height: 1;
     letter-spacing: -0.01em;
     color: #7D7D7D;
+
+    @include sm {
+      font-size: 14px;
+    }
   }
 
   .date-time {
@@ -74,5 +92,9 @@
     font-size: 18px;
     line-height: 1;
     font-weight: 400;
+
+    @include sm {
+      font-size: 16px;
+    }
   }
 </style>
