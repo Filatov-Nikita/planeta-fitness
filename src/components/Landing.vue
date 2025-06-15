@@ -56,25 +56,49 @@
 <style scoped lang="scss">
   .section-main {
     margin-bottom: 35px;
+
+    @include md {
+      margin-bottom: 25px;
+    }
   }
 
   .section-tape {
     margin-bottom: 75px;
+
+    @include md {
+      margin-bottom: 35px;
+    }
   }
 
   .section-trainings {
     padding: 75px 0;
+
+    @include md {
+      padding: 35px 0;
+    }
   }
 
   .section-faq {
     padding: 75px 0;
+
+    @include md {
+      padding: 35px 0;
+    }
   }
 
   .section-partners {
     padding: 75px 0 100px;
+
+    @include md {
+      padding: 35px 0 50px;
+    }
   }
 
   .section-order {
     padding: 75px 0;
+
+    @include md {
+      padding: 35px 0;
+    }
   }
 </style>

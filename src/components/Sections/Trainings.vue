@@ -1,7 +1,7 @@
 <template>
   <section id="trainings">
     <div class="wrapper">
-      <h2 class="h2 text-center title">Выбери свою идеальную тренировку</h2>
+      <h2 class="h2 text-center title">Выбери свою&nbsp;идеальную тренировку</h2>
       <div class="items">
         <TrainingsList class="item-list" :items="categories" @change:category="$emit('change:category', $event)" />
         <div class="item">
